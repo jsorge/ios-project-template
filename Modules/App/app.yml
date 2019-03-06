@@ -1,0 +1,10 @@
+targets:
+  {{App-Name}}:
+    type: application
+    platform: iOS
+    sources:
+      - Sources
+      - Resources
+    configFiles:
+      Debug: xcconfigs/App-Debug.xcconfig
+      Release: xcconfigs/App-Release.xcconfig

@@ -1,0 +1,8 @@
+name: {{App-Name}}
+fileGroups:
+  - Modules/App
+include:
+  - Modules/App/app.yml
+configFiles:
+  Debug: Modules/xcconfigs/Project-Debug.xcconfig
+  Release: Modules/xcconfigs/Project-Release.xcconfig

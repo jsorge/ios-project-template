@@ -1,0 +1,10 @@
+targets:
+  {{Module}}:
+    type: framework
+    platform: iOS
+    sources:
+      - path: Sources
+        name: Extensions
+    configFiles:
+      Debug: xcconfigs/{{Module}}-Debug.xcconfig
+      Release: xcconfigs/{{Module}}-Release.xcconfig

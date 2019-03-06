@@ -1,0 +1,7 @@
+APP_NAME = {{App-Name}}
+
+APP_VERSION = 1.0
+
+BUILD_NUMBER = 1
+
+BUNDLE_ID = io.taphouse.{{App-Name}}.ios

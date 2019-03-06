@@ -1,0 +1,5 @@
+#include "App-Shared.xcconfig"
+
+PROVISIONING_PROFILE_SPECIFIER =
+CODE_SIGN_IDENTITY = iPhone Distribution
+CODE_SIGN_STYLE = Manual
