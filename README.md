@@ -1,3 +1,8 @@
-# {{App-Name}}
+# iOS Project Template
 
-We're not checking in a project file with this app. Instead we'll use [xcodegen](https://github.com/yonaskolb/XcodeGen) to generate the project file. It's managed by the Swift Package Manager. To create the project file run `make project` from the repo root.
+This is a template for making a new iOS app. To get started, run `make install`. Enter the name of your app, and the files will be updated to reflect it. Here's what is included:
+
+* A modular set up for your project with scaffolding using [xcodegen](https://github.com/yonaskolb/XcodeGen).
+* A basic app that includes a launch screen storyboard that will display your app name, and an app delegate.
+* To create your project there is a make command, just run `make project`.
+* To add a new module, run `make new-module name=<module>` and it will be created for you.

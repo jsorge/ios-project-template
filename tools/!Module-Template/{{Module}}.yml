@@ -4,7 +4,7 @@ targets:
     platform: iOS
     sources:
       - path: Sources
-        name: Extensions
+        name: {{Module}}
     configFiles:
       Debug: xcconfigs/{{Module}}-Debug.xcconfig
       Release: xcconfigs/{{Module}}-Release.xcconfig

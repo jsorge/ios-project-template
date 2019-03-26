@@ -1,4 +1,4 @@
-#include "Extensions-Shared.xcconfig"
+#include "{{Module}}-Shared.xcconfig"
 
 DEBUG_INFORMATION_FORMAT = dwarf
 MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE

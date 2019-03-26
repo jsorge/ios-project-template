@@ -1,4 +1,4 @@
-#include "../../infoplist.xcconfig"
+#include "../../project.xcconfig"
 
 INFOPLIST_FILE = $(SRCROOT)/Modules/{{Module}}/Supporting Files/Info.plist
 

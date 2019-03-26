@@ -5,3 +5,9 @@ APP_VERSION = 1.0
 BUILD_NUMBER = 1
 
 BUNDLE_ID = io.taphouse.{{App-Name}}.ios
+
+DEV_TEAM =
+
+SWIFT_VERSION_SHARED = 4.2
+
+IOS_VERSION_SHARED = 12.0

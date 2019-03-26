@@ -1,4 +1,4 @@
-#include "Extensions-Shared.xcconfig"
+#include "{{Module}}-Shared.xcconfig"
 
 CODE_SIGN_IDENTITY = iPhone Developer
 COPY_PHASE_STRIP = NO

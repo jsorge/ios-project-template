@@ -1,4 +1,4 @@
-name: {{App-Name}}
+name: '{{App-Name}}'
 fileGroups:
   - Modules/App
 include:
