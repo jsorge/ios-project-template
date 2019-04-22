@@ -1,4 +1,6 @@
-import Files // marathon:https://github.com/JohnSundell/Files.git
+#!/usr/bin/swift sh
+
+import Files // @JohnSundell ~> 3.1.0
 import Foundation
 
 /// Used to interact with the console in a CLI context

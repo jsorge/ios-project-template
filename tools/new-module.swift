@@ -1,6 +1,8 @@
-import Files // marathon:https://github.com/JohnSundell/Files.git
+#!/usr/bin/swift sh
+
+import Files // @JohnSundell ~> 3.1.0
 import Foundation
-import Yams // marathon:https://github.com/jpsim/Yams.git
+import Yams // @jpsim ~> 2.0.0
 
 /// Used to interact with the console in a CLI context
 struct Console {
@@ -53,7 +55,7 @@ func replaceToken(_ token: String, in file: File, with name: String) throws {
 func addProjectDependency(_ depName: String) throws {
     let projectFile = try Folder.current.file(named: "project.yml")
     let projectContents = try projectFile.readAsString()
-    guard let decoded = try? Yams.load(yaml: projectContents) as? [String: Any], var projectYaml = decoded else {
+    guard var projectYaml = try? Yams.load(yaml: projectContents) as? [String: Any] else {
         Console.writeMessage("Module created but not added to the project yet. Do that manually.", to: .error)
         exit(0)
     }
@@ -66,6 +68,14 @@ func addProjectDependency(_ depName: String) throws {
     includes.append("Modules/\(depName)/\(depName).yml")
     projectYaml["include"] = includes
 
+    var fileGroups = [String]()
+    if let projectGroups = projectYaml["fileGroups"] as? [String] {
+    	fileGroups = projectGroups
+    }
+
+    fileGroups.append("Modules/\(depName)/")
+    projectYaml["fileGroups"] = fileGroups
+
     let encodedProject = try Yams.dump(object: projectYaml)
     try projectFile.write(string: encodedProject)
 }
@@ -73,11 +83,10 @@ func addProjectDependency(_ depName: String) throws {
 func addTargetDependency(_ depName: String) throws {
     let appYamlFile = try Folder.current.subfolder(atPath: "Modules/App").file(named: "app.yml")
     let yamlContents = try appYamlFile.readAsString()
-    guard let decoded = try? Yams.load(yaml: yamlContents) as? [String: Any], var appYaml = decoded else {
+    guard var appYaml = try? Yams.load(yaml: yamlContents) as? [String: Any] else {
         Console.writeMessage("Module created but not added as an app dependency yet. Do that manually.", to: .error)
         exit(0)
     }
-
 
     guard var targets = appYaml["targets"] as? [String: Any],
         let appName = targets.keys.first,

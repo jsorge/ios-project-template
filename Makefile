@@ -4,8 +4,8 @@ project:
 
 .PHONY: start
 start:
-	marathon run ./tools/start.swift
+	swift run swift-sh ./tools/start.swift
 
 .PHONY: new-module
 new-module:
-	marathon run ./tools/new-module.swift
+	swift run swift-sh ./tools/new-module.swift
