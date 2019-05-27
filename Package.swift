@@ -11,9 +11,9 @@ let package = Package(
         // This is just an arbitrary Swift file in the app, that has
         // no dependencies outside of Foundation, the dependencies section
         .target(name: "{{App-Name}}", dependencies: [
-        										"swift-sh",
-        										"xcodegen",
-        									],
+						       "swift-sh",
+        						"xcodegen",
+        					    ],
         		path: "Modules", sources: ["tools.swift"]),
     ]
 )
