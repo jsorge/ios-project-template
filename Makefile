@@ -1,11 +1,17 @@
 .PHONY: project
 project:
-	swift run xcodegen
+	@chmod +x ./tools/ensure-xcodegen.sh
+	@./tools/ensure-xcodegen.sh
+	@./vendor/XcodeGen
 
 .PHONY: start
 start:
-	swift run swift-sh ./tools/start.swift
+	@chmod +x ./tools/ensure-swift-sh.sh
+	@./tools/ensure-swift-sh.sh
+	@./vendor/swift-sh ./tools/start.swift
 
 .PHONY: new-module
 new-module:
-	swift run swift-sh ./tools/new-module.swift
+	@chmod +x ./tools/ensure-swift-sh.sh
+	@./tools/ensure-swift-sh.sh
+	@./vendor/swift-sh ./tools/new-module.swift

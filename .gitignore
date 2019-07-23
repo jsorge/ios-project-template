@@ -98,4 +98,5 @@ iOSInjectionProject/
 # xcodegen
 *.xcodeproj
 .DS_Store
+vendor/
 
