@@ -34,10 +34,35 @@ struct Console {
     }
 }
 
+enum ModuleType: Int, CaseIterable {
+	case framework = 1
+	case iosApp = 2
+	case macApp = 3
+
+	init?(text: String) {
+		guard let num = Int(text), let moduleType = ModuleType(rawValue: num) else { return nil }
+		self = moduleType
+	}
+
+	var templateFolder: String {
+		switch self {
+		case .framework: return "!Module-Template"
+		case .iosApp: return "!Mac-App-Template"
+		case .macApp: return "!iOS-App-Template"
+		}
+	}
+}
+
 Console.writeMessage("What is the name of you new module?")
 guard let moduleName = Console.getInput(), moduleName.isEmpty == false else {
     Console.writeMessage("There must be a module name entered")
     exit(EXIT_FAILURE)
+}
+
+Console.writeMessage("What kind of module is it?\n1. Framework\n2. iOS app\n3. Mac app")
+guard let moduleTypeInput = Console.getInput(), let moduleType = ModuleType(text: moduleTypeInput) else {
+	Console.writeMessage("There needs to be a valid module type selected")
+	exit(EXIT_FAILURE)
 }
 
 func replaceToken(_ token: String, in file: File, with name: String) throws {
@@ -111,8 +136,9 @@ func addTargetDependency(_ depName: String) throws {
 let moduleToken = "{{Module}}"
 
 // copy template folder over
-let templateFolder = try Folder.current.subfolder(atPath: "tools/!Module-Template")
+let templateFolder = try Folder.current.subfolder(atPath: "tools/\(moduleType.templateFolder)")
 let targetFolder = try Folder.current.subfolder(atPath: "Modules").createSubfolderIfNeeded(withName: moduleName)
+
 for file in templateFolder.files {
     let newFile = try file.copy(to: targetFolder)
     try replaceToken(moduleToken, in: newFile, with: moduleName)
@@ -127,4 +153,8 @@ for folder in templateFolder.subfolders {
 }
 
 try addProjectDependency(moduleName)
-try addTargetDependency(moduleName)
+
+if moduleType == .framework {
+	try addTargetDependency(moduleName)
+}
+

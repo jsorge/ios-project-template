@@ -56,6 +56,9 @@ let appToken = "{{App-Name}}"
 var files = [File]()
 files.append(contentsOf: Folder.current.files)
 
+let modulesFolder = try Folder.current.subfolder(atPath: "Modules")
+files.append(contentsOf: modulesFolder.files)
+
 let appFolder = try Folder.current.subfolder(atPath: "Modules/App")
 files.append(contentsOf: appFolder.files)
 
