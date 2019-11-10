@@ -47,8 +47,8 @@ enum ModuleType: Int, CaseIterable {
 	var templateFolder: String {
 		switch self {
 		case .framework: return "!Module-Template"
-		case .iosApp: return "!Mac-App-Template"
-		case .macApp: return "!iOS-App-Template"
+		case .iosApp: return "!iOS-App-Template"
+		case .macApp: return "!Mac-App-Template"
 		}
 	}
 }
