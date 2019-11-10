@@ -1,4 +1,4 @@
-#include "App-Shared.xcconfig"
+#include "{{Module}}-Shared.xcconfig"
 
 PROVISIONING_PROFILE_SPECIFIER =
 CODE_SIGN_IDENTITY = iPhone Distribution
