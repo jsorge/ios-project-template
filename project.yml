@@ -5,4 +5,4 @@ fileGroups:
 - Modules/App
 include:
 - Modules/App/app.yml
-name: Maverick
+name: {{App-Name}}
